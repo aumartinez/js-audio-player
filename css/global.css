@@ -55,6 +55,13 @@ header {
   background-color: #eee;
 }
 
+#progress {
+  position: absolute;
+  height: 32px;
+  width: 0%;
+  background: rgba(82, 138, 174, 0.4);
+}
+
 .clearfix {
   clear: both;
 }
