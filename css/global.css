@@ -60,6 +60,7 @@ header {
   height: 32px;
   width: 0%;
   background: rgba(82, 138, 174, 0.4);
+  transition: width 0.5s;
 }
 
 .clearfix {
