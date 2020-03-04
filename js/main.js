@@ -1,0 +1,6 @@
+//JS
+
+$(document).ready(
+function () {
+  
+});
