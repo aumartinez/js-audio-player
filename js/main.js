@@ -1,5 +1,7 @@
 //JS
 
+"use strict";
+
 window.addEventListener("load", 
   function() {    
     let media = document.querySelector("#media");
@@ -8,23 +10,36 @@ window.addEventListener("load",
     let progress = document.querySelector("#progress");
     let max = parseInt(bar.offsetWidth);
     let loop;
+    let symbol = document.createElement("i");
     
-    console.log(max);
+    btn.appendChild(symbol);
+    symbol.setAttribute("class", "fa fa-play");
+    symbol.setAttribute("aria-hidden", "true");
     
     btn.addEventListener("click", function() {      
       if (!media.paused && !media.ended) {
         media.pause();
-        btn.innerHTML = "<i class=\"fa fa-play\" aria-hidden=\"true\"></i>";
+        symbol.setAttribute("class", "fa fa-play");
+        symbol.setAttribute("aria-hidden", "true");
         window.clearInterval(loop);
       }
       else {
         media.play();
-        btn.innerHTML = "<i class=\"fa fa-pause\" aria-hidden=\"true\"></i>";
+        symbol.setAttribute("class", "fa fa-pause");
+        symbol.setAttribute("aria-hidden", "true");        
         loop = setInterval(state, 1000);
       }
     }, false);
     
-    bar.addEventListener("click", move, false);
+    bar.addEventListener("click", function(event){
+      if(!media.paused && !media.ended) {
+        let posX = event.pageX - bar.getBoundingClientRect().left;
+        let newTime = posX * media.duration / max;
+        
+        media.currentTime = newTime;
+        progress.style.width = posX + "px";
+      }
+    }, false);
     
     function state() {        
       if(!media.ended) {        
@@ -33,21 +48,11 @@ window.addEventListener("load",
       }
       else {
         progress.style.width = "0";
-        btn.innerHTML = "<i class=\"fa fa-play\" aria-hidden=\"true\"></i>";
+        symbol.setAttribute("class", "fa fa-play");
+        symbol.setAttribute("aria-hidden", "true");        
         window.clearInterval(loop);
       }
-    }
-    
-    function move(evt) {
-      console.log("clicked");
-      if(!media.paused && !media.ended) {        
-        let posX = evt.pageX - bar.offsetLeft;
-        console.log(posX);
-        let newTime = posX * media.duration / max;
-        media.currenTime = newTime;
-        progress.style.width = posX + "px";
-      }
-    }
+    }    
     
   }
 , false);
