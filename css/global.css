@@ -53,13 +53,17 @@ header {
   height: 32px;
   border: 1px solid #ccc;
   background-color: #eee;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #progress {
   position: absolute;
   height: 32px;
   width: 0%;
-  background: rgba(82, 138, 174, 0.4);
+  background-color: #46b3e6;
+  top: 0;
+  left: 0;
   transition: width 0.5s;
 }
 
