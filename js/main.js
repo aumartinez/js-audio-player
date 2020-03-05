@@ -27,7 +27,7 @@ window.addEventListener("load",
         media.play();
         symbol.setAttribute("class", "fa fa-pause");
         symbol.setAttribute("aria-hidden", "true");        
-        loop = setInterval(state, 1000);
+        loop = setInterval(state, 500);
       }
     }, false);
     
