@@ -7,6 +7,8 @@ As for today there is still a bug in GitHub that prevents to upload MP3 media fi
 
 ## Live Demo
 
+![Screenshot](/screenshots/screenshot.PNG)
+
 You may preview the live demo at:
 
 https://accedo-gps.000webhostapp.com/demo/js-audio-player/
